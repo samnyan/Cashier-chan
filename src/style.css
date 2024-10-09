@@ -1,0 +1,83 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  /*color: rgba(255, 255, 255, 0.87);*/
+  /*background-color: #242424;*/
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: white;
+}
+
+#app {
+  height: 100vh;
+  width: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+.better_scrollbar {
+
+  scrollbar-color: rgba(203,213,225, 0.5) rgba(0,0,0,0);
+  scrollbar-width: thin;
+}
+
+.kbd_btn {
+  color: #263238;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 18px;
+  border: solid 1px #eceff1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.kbd_btn.money {
+  color: #ff8f00;
+  border: solid 1px #ffe0b2;
+  background: #fff8e1;
+}
+.kbd_btn.confirm {
+  border: solid 1px white;
+  color: white;
+  background: #039be5;
+}
+.kbd_btn:hover {
+  background: #eceff1;
+}
+.kbd_btn.money:hover {
+  background: #ffecb3;
+}
+.kbd_btn.confirm:hover {
+  background: #01579b;
+}

@@ -1,0 +1,61 @@
+{
+  "name": "cashier-chan",
+  "version": "1.0.4",
+  "main": "dist-electron/main/index.js",
+  "description": "Really simple Electron based offline pos system.",
+  "author": "sam_nya <samnya@outlook.com>",
+  "license": "LGPL",
+  "packageManager": "pnpm@9.11.0",
+  "private": true,
+  "keywords": [
+    "electron",
+    "pos",
+    "vue"
+  ],
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "preview": "vite preview",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.6.0",
+    "@mdi/font": "^7.4.47",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "electron": "^29.1.1",
+    "electron-builder": "^24.13.3",
+    "prettier": "^3.3.3",
+    "typescript": "^5.4.2",
+    "unocss": "^0.62.4",
+    "vite": "^5.1.5",
+    "vite-plugin-electron": "^0.28.4",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.6"
+  },
+  "dependencies": {
+    "@types/node": "^22.5.5",
+    "@vueuse/core": "^11.1.0",
+    "@vueuse/sound": "^2.0.1",
+    "add": "^2.0.6",
+    "axios": "^1.7.7",
+    "better-sqlite3": "^11.3.0",
+    "currency.js": "^2.0.4",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5",
+    "electron-log": "^5.2.0",
+    "electron-store": "^10.0.0",
+    "pinia": "^2.2.2",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
+    "vee-validate": "^4.13.2",
+    "vuetify": "^3.7.2"
+  }
+}
