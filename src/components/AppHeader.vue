@@ -91,7 +91,7 @@ const onLogoutClick = (dialogRef: Ref<boolean>) => {
     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     <v-app-bar-title>
       <div class="flex items-center">
-        <img class="h-12" src="" alt="Logo" />
+        <v-icon icon="mdi-cash-register" />
         <v-breadcrumbs :items="routes"></v-breadcrumbs>
       </div>
     </v-app-bar-title>

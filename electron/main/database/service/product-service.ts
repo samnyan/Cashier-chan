@@ -8,7 +8,7 @@ import {
   PRODUCT_UPDATE_PRODUCT
 } from '../../../common/const'
 import { FindManyOptions, Like } from 'typeorm'
-import { VDataTableServerQueryOptions } from '../../../common/interface'
+import { VDataTableServerQueryOptions } from '../../../common/types/common'
 import { getQueryObject } from '../../../common/utils'
 
 export const listProduct = async (query?: VDataTableServerQueryOptions) => {
@@ -59,7 +59,7 @@ export const deleteProduct = async (productId: number) => {
 }
 
 export function initProductService() {
-  ipcMain.handle(PRODUCT_LIST_PRODUCT, (event, args?: FindManyOptions<Product>) => listProduct(args))
+  ipcMain.handle(PRODUCT_LIST_PRODUCT, (event, args?: VDataTableServerQueryOptions) => listProduct(args))
   ipcMain.handle(PRODUCT_FIND_PRODUCT_BY_BARCODE, (event, args: string) => findProductByBarcode(args))
   ipcMain.handle(PRODUCT_UPDATE_PRODUCT, (event, args) => updateProduct(args))
   ipcMain.handle(PRODUCT_DELETE_PRODUCT, (event, args) => deleteProduct(args))

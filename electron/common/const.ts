@@ -7,7 +7,6 @@ export const PRODUCT_UPDATE_PRODUCT = 'product-service:updateProduct'
 export const PRODUCT_DELETE_PRODUCT = 'product-service:deleteProduct'
 
 export const PRODUCT_SYNC_EXTERNAL_PRODUCT = 'product-service:syncExternalProduct'
-export const PRODUCT_SYNC_EXTERNAL_PRODUCT_CALLBACK = 'product-service:callback:syncExternalProduct'
 
 export const TRADE_LIST_TRADE = 'trade-service:listTrade'
 export const TRADE_GET_TRADE_ITEM = 'trade-service:getTradeItem'

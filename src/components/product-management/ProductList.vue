@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
 import type { Product } from '../../../electron/main/database/entity/Product'
-import { useUserStore } from '../../store/user'
-import { PRODUCT_SYNC_EXTERNAL_PRODUCT_CALLBACK } from '../../../electron/common/const'
 import { VDataTableServer } from 'vuetify/components/VDataTable'
 import { mergeReactive } from '../../utils/objUtil'
 import { usePagination } from '../../composables/usePagination'
-import { showToastError, showToastSuccess } from '../../store/toast'
-
-const userStore = useUserStore()
+import { showToastSuccess } from '../../store/toast'
 
 const props = defineProps({
   dialog: {
@@ -103,25 +99,6 @@ function onCreateClick() {
   submitted.value = false
 }
 
-const syncing = ref(false)
-const progressText = ref('')
-window.ipcRenderer.on(PRODUCT_SYNC_EXTERNAL_PRODUCT_CALLBACK, (_event, progress, total) => {
-  progressText.value = `当前${progress}页，共${total}页`
-  syncing.value = progress < total
-})
-
-function onSyncProductLick() {
-  const token = userStore.token
-  if (token) {
-    window.database.syncExternalProduct(token).catch(() => {
-      syncing.value = false
-    })
-  } else {
-    showToastError('请先登录')
-    syncing.value = false
-  }
-}
-
 function hideDialog() {
   editProductDialog.value = false
   submitted.value = false
@@ -166,30 +143,6 @@ function onDeleteClick(prod: Product) {
         <div>产品管理</div>
 
         <v-btn id="create-btn-target" color="primary" @click="onCreateClick">新建产品</v-btn>
-
-        <v-dialog v-model="syncing" max-width="320" persistent>
-          <template #activator="{ props }">
-            <v-btn color="secondary" v-bind="props" @click="onSyncProductLick">同步产品</v-btn>
-          </template>
-          <v-list class="py-2" color="primary" elevation="12" rounded="lg">
-            <v-list-item prepend-icon="$vuetify-outline" :title="progressText">
-              <template v-slot:prepend>
-                <div class="pe-4">
-                  <v-icon color="primary" size="x-large"></v-icon>
-                </div>
-              </template>
-
-              <template v-slot:append>
-                <v-progress-circular
-                  color="primary"
-                  indeterminate="disable-shrink"
-                  size="16"
-                  width="2"
-                ></v-progress-circular>
-              </template>
-            </v-list-item>
-          </v-list>
-        </v-dialog>
       </template>
 
       <v-spacer></v-spacer>

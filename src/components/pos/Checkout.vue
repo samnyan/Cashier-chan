@@ -4,7 +4,7 @@ import { CNY } from '../../../electron/common/currencyUtil'
 import { computed, reactive, ref } from 'vue'
 import dayjs from 'dayjs'
 import { CartItem, useCart } from '../../store/cart'
-import { AlipayResultDto, PayResponseDto } from '../../api/payment'
+import { AlipayResultDto, PayResponseDto, WeChatPayResultDto } from '../../api/payment'
 import { useWeChatMicroPay } from '../../composables/useWeChatMicroPay'
 import { DEVICE_ID } from '../../../electron/common/const'
 import { useAlipay } from '../../composables/useAlipay'
@@ -165,7 +165,7 @@ const onCompleteCashPay = () => {
   })
 }
 
-const onCompleteWeChatPay = (resp: PayResponseDto) => {
+const onCompleteWeChatPay = (resp: PayResponseDto<WeChatPayResultDto>) => {
   const trade = getTradeForm()
   trade.payType = 1
   if (resp.result) {
@@ -181,7 +181,6 @@ const onCompleteWeChatPay = (resp: PayResponseDto) => {
     cart.clearCart()
     showCheckout.value = false
     resetPayment()
-    successSound.play()
     emits('success', 8000, { wechat: resp })
   })
 }
@@ -240,7 +239,7 @@ const onPaymentClose = () => {
   emits('close')
 }
 
-const onInputFocus = (ev: Event, type: typeof cashInputSelection.value) => {
+const onInputFocus = (ev: any, type: typeof cashInputSelection.value) => {
   cashInputSelection.value = type
   const i = ev.target as HTMLInputElement
   i.type = 'text'

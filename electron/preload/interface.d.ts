@@ -4,7 +4,6 @@ import {
   listProduct,
   updateProduct
 } from '../main/database/service/product-service'
-import { syncExternalProduct } from '../main/service/remote-product'
 import {
   addTradeRefundAmount,
   getListPageSum,
@@ -32,7 +31,6 @@ export interface IDatabaseAPI {
   findProductByBarcode: typeof findProductByBarcode
   updateProduct: typeof updateProduct
   deleteProduct: typeof deleteProduct
-  syncExternalProduct: typeof syncExternalProduct
 
   listTrade: typeof listTrade
   getTradeItem: typeof getTradeItem
